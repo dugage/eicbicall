@@ -97,7 +97,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '104.248.245.217',
+	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '&4222SFCrb',
 	'database' => 'eicbi_callcenter',
