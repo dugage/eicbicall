@@ -154,14 +154,15 @@ class Login  extends MX_Controller
         $session_data['login'] = TRUE;
         $this->session->set_userdata($session_data);
         //creamos una entrada de actividad
-        $activity = new Entities\Useractivity;
+        //$activity = new Entities\Useractivity;
         //seteamos los datos
-        $activity->setIdusuario($usuario);
+        //$activity->setIdusuario($usuario);
         //guardamos
-        $this->doctrine->em->persist($activity);
-        $this->doctrine->em->flush();
+        //$this->doctrine->em->persist($activity);
+        //$this->doctrine->em->flush();
         //almacenamos el id userActivity
-        $session_data['idUserActivity'] = $activity->getId();
+        //$session_data['idUserActivity'] = $activity->getId();
+        $session_data['idUserActivity'] = 1;
         $this->session->set_userdata($session_data);
         //redireccionamos al index
         redirect('/');
