@@ -33,7 +33,7 @@
 
                 <a class="brand" href="#">
                 <!--<img style="margin-left: 15%;width: 362px;" width="170" src="<?= base_url('assets/pages/img/'.$project->getLogolog()) ?>" alt="logo">-->
-                 <img style="margin-left: 26%;width: 261px;" width="170" src="https://www.dugage.com/assets_app/images/footer-logo.png" alt="logo">
+                 <img style="margin-left: 26%;width: 261px;" width="170" src="<?= base_url('assets/apps/img/cabecera_web_eicbi-01.png') ?>" alt="logo">
                  </a>
 
             </div>

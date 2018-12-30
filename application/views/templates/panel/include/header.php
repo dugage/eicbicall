@@ -7,7 +7,7 @@
             <a href="#">
 
                 <!--<img style="margin: 17px -5px 0;" width="155" src="<?= base_url('assets/pages/img/logo-big.png') ?>" alt="logo" class="logo-default" /> -->
-                <img style="margin: 17px -5px 0;" width="155" src="https://www.dugage.com/assets_app/images/footer-logo.png" alt="logo" class="logo-default" /> 
+                <img style="margin: 17px -5px 0;" width="155" src="<?= base_url('assets/apps/img/cabecera_web_eicbi-01.png') ?>" alt="logo" class="logo-default" /> 
                 
                 </a>
             
