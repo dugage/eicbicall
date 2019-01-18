@@ -19,8 +19,12 @@
     <?php endif ?>
 
     <?php if($this->uri->segment(2)  == '' AND $rol == 4): ?>
+        
+       <a style="float: right;" href="<?= site_url($path.'/startCalls') ?>" class="btn blue" type="button"><i class=" icon-call-end "></i> Comenzar</a>
 
-        <a style="float: right;" href="<?= site_url($path.'/startCalls') ?>" class="btn blue" type="button"><i class=" icon-call-end "></i> Comenzar</a>
+        <a href="<?= base_url('assets/csv/registros.csv') ?>" title="Descarga la plantilla CSV" style="float: right;" class="btn grey-mint" type="button"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Plantilla CSV</a>
+
+        <button title="Subir lote de registros" style="float: right;" class="btn yellow" data-toggle="modal" data-target="#registrosModal" type="button"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Registros</button>
      
     <?php endif ?>
 
