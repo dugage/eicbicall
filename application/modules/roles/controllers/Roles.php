@@ -96,7 +96,6 @@ class Roles  extends MX_Controller
         $data['reference'] = strtoupper(__FUNCTION__."-".$this->nameClass);
         //ruta para los botones y acciones
         $data['path'] = $this->uri->segment(1).'/'.$this->uri->segment(2);
-
         //icono del módulo
         $data['icono'] = $this->icono;
         // titulo del módulo
@@ -106,6 +105,8 @@ class Roles  extends MX_Controller
 
         //obtenemos los datos por su id
         $data['getRow'] = $this->doctrine->em->find("Entities\\Roles", $id);
+        //obtenemos los módules desde la tabla menuPanel
+        $data['getModules'] = $this->doctrine->em->getRepository("Entities\\Menupanel")->findAll();
         //comprobamos formulario submit
         if(isset($_POST['submit']))
         {
