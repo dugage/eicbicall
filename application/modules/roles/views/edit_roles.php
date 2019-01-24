@@ -36,20 +36,20 @@
 
                 <h3>Módulos</h3>
 
-                <form action="lolo" role="form" method="post">
+                <form action="<?= site_url('roles/setPermissions/'.$getRow->getId()) ?>" role="form" method="post">
 
                     <div class="form-body">
 
                         <?php foreach ($getModules as $key => $value): ?>
 
-                            <label style="width: 20%;"><input class="checkbox-inline" type="checkbox" value="<?= $value->getId() ?>"> <?= $value->getNombre() ?></label>
+                            <label style="width: 20%;"><input <?php if(in_array($value->getId(), $permissions)) echo 'checked' ?> name="module[]" class="checkbox-inline" type="checkbox" value="<?= $value->getId() ?>"> <?= $value->getNombre() ?></label>
       
                         <?php endforeach ?>
 
                         <hr/>
                         <div class="form-group">
 
-                            <button name="submit" class="btn green" type="submit">Guardar</button>
+                            <button name="submit-permissions" class="btn green" type="submit">Guardar</button>
 
                         </div>
 
