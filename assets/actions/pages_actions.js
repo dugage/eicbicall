@@ -1152,6 +1152,26 @@ var PagesActions = {
         });
 
     },
+
+    GetArgumentario: function(){
+
+        $('body').on('click', '.argumentario', function(e){
+
+            var id = $(this).attr('id');
+            var campaign = $(this).data( "campaign" );
+
+            var type = 'POST';
+            var url = site_url+'/argumentario/getArgumentario';
+            var data = {'id':id,'campaign':campaign};
+
+            var returndata = ActionAjax(type,url,data,null,null,true,false);
+            result = JSON.parse(returndata);
+
+            $('#modalArgumentario h4.modal-title').text(result.title);
+            $('#modalArgumentario .modal-body').html(result.body);
+
+        });
+    },
     
 }
 
@@ -1204,4 +1224,5 @@ $(window).load(PagesActions.DeleteFolder);
 $(window).load(PagesActions.DeleteFile);
 $(window).load(PagesActions.Tarifas);
 $(window).load(PagesActions.EmailToLink);
+$(window).load(PagesActions.GetArgumentario);
 
