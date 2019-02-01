@@ -68,4 +68,5 @@
 </div>
 
 <?= $this->load->view('include/modals/evento_edit') ?>
+<?= $this->load->view('include/modals/eventos_add') ?>
 <?= $this->load->view('include/modals/eventos_list') ?>

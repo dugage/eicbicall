@@ -66,12 +66,18 @@ $route['configuracion/campanas/delete/(:num)'] = 'campaigns/delete/$1';
 $route['configuracion/formulario'] = 'formulario';
 $route['configuracion/formulario/add'] = 'formulario/create';
 $route['configuracion/formulario/edit/(:num)'] = 'formulario/edit/$1';
+$route['configuracion/formulario/delete/(:num)'] = 'formulario/delete/$1';
 //rutas argumentario
 $route['configuracion/argumentario'] = 'argumentario';
 $route['configuracion/argumentario/add'] = 'argumentario/add';
 $route['configuracion/argumentario/edit/(:num)'] = 'argumentario/edit/$1';
 $route['configuracion/argumentario/delete/(:num)'] = 'argumentario/delete/$1';
 //rutas fase_ventas
+$route['configuracion/fases-venta'] = 'fase_ventas';
+$route['configuracion/fases-venta/add'] = 'fase_ventas/add';
+$route['configuracion/fases-venta/edit/(:num)'] = 'fase_ventas/edit/$1';
+$route['configuracion/fases-venta/delete/(:num)'] = 'fase_ventas/delete/$1';
+//rutas regalos
 $route['configuracion/regalos'] = 'regalos';
 $route['configuracion/regalos/add'] = 'regalos/add';
 $route['configuracion/regalos/edit/(:num)'] = 'regalos/edit/$1';
@@ -87,10 +93,10 @@ $route['configuracion/operadores/add'] = 'operadores/add';
 $route['configuracion/operadores/edit/(:num)'] = 'operadores/edit/$1';
 $route['configuracion/operadores/delete/(:num)'] = 'operadores/delete/$1';
 //rutas estados_registros
-$route['configuracion/estados-seguimiento'] = 'estados_seguimiento';
-$route['configuracion/estados-seguimiento/add'] = 'estados_seguimiento/add';
-$route['configuracion/estados-seguimiento/edit/(:num)'] = 'estados_seguimiento/edit/$1';
-$route['configuracion/estados-seguimiento/delete/(:num)'] = 'estados_seguimiento/delete/$1';
+$route['configuracion/estados-seguimientos'] = 'estados_seguimiento';
+$route['configuracion/estados-seguimientos/add'] = 'estados_seguimiento/add';
+$route['configuracion/estados-seguimientos/edit/(:num)'] = 'estados_seguimiento/edit/$1';
+$route['configuracion/estados-seguimientos/delete/(:num)'] = 'estados_seguimiento/delete/$1';
 //rutas tipos documentos
 $route['configuracion/tipos-documentos'] = 'tipos_documentos';
 $route['configuracion/tipos-documentos/add'] = 'tipos_documentos/add';
@@ -132,6 +138,12 @@ $route['oportunidades/view/(:num)'] = 'oportunidades/view/$1';
 
 //rutas calendario
 $route['calendario/get_calendar/(:num)/(:num)'] = 'calendario/get_calendar/$1/$2';
+
+//rutas para archivador
+$route['archivador'] = 'biblioteca';
+$route['archivador/newFolder'] = 'biblioteca/newFolder';
+$route['archivador/deleteFolder'] = 'biblioteca/deleteFolder';
+$route['archivador/deleteFile'] = 'biblioteca/deleteFile';
 
 //rutas precontactos
 $route['precontactos/export/(:num)'] = 'precontactos/export/$1';

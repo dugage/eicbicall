@@ -765,7 +765,7 @@ class Registros  extends MX_Controller
             {
 
                 $record->setOculto(1);
-
+ 
             }
             //actualizamos
             $this->doctrine->em->flush();

@@ -155,6 +155,7 @@ class Argumentario  extends MX_Controller
         //eliminamos el item
         $this->doctrine->em->remove($getRow);
         $this->doctrine->em->flush();
+        $path = $this->uri->segment(1).'/'.$this->uri->segment(2);
         //redireccionamos
         redirect(site_url($path));
     }
