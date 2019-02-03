@@ -1,6 +1,7 @@
 <div class="portlet-title">
 
-    <?php if($this->uri->segment(2) != 'add' AND $this->session->userdata('rol') == 1): ?>
+	<!-- MODIFICADO: se ha quitado de la condicion if "AND $this->session->userdata('rol') == 1" -->	
+    <?php if($this->uri->segment(2) != 'add'): ?>
         <a href="<?= site_url($path.'/add') ?>" class="btn green" type="button"><i class=" icon-plus "></i> Crear</a>
 
       <?php if($this->session->userdata('rol') == 1): ?>  

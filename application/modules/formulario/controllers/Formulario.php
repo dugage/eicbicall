@@ -48,6 +48,9 @@ class Formulario  extends MX_Controller
         $data['robots'] = 'noindex, nofollow';
         $data['project'] = $this->proyecto;
         $data['reference'] = strtoupper(__FUNCTION__."-".$this->nameClass);
+        //ruta para los botones y acciones
+        $data['path'] = $this->uri->segment(1).'/'.$this->uri->segment(2);
+
         //icono del módulo
         $data['icono'] = $this->icono;
         // titulo del módulo
@@ -77,8 +80,8 @@ class Formulario  extends MX_Controller
                 $this->doctrine->em->persist($form);
                 $this->doctrine->em->flush();
 
-                //redireccionamos al edit
-                redirect(site_url($data['path'].'/edit/'.$form->getId()));  
+                //redireccionamos al edit // EDITADO
+                redirect(site_url($data['path'].'/edit/'.$form->getId()));
             }
         }
         //cargamos la vista
@@ -102,7 +105,9 @@ class Formulario  extends MX_Controller
         $data['breadcrumb'] = array($this->nameClass,'Editar '.$this->nameClass);
         //ruta para los botones y acciones
         $data['path'] = $this->uri->segment(1).'/'.$this->uri->segment(2);
+
         $data['id'] = $id;
+
         //obtenemos los datos por su id
         $data['getRow'] = $this->doctrine->em->find("Entities\\Formularios", $id);
         //campañas. Toddas las campañas listado.
@@ -133,7 +138,7 @@ class Formulario  extends MX_Controller
         if(isset($_POST['submitAddField']))
         {
             $this->_fieldAdd($id);
-            redirect($data['path'].'/', 'refresh');
+            redirect($data['path'].'/edit/'.$id, 'refresh');
         }
         //cargamos la vista
         $this->load->view('templates/panel/layout',$data);
@@ -204,7 +209,15 @@ class Formulario  extends MX_Controller
 
     public function delete($id)
     {
-        
+        //obtenemos el dato mediante id
+        $getRow = $this->doctrine->em->getRepository("Entities\\Formularios")->findOneBy(["id" => $id]);
+        //eliminamos el item
+        $this->doctrine->em->remove($getRow);
+        $this->doctrine->em->flush();
+        //ruta para los botones y acciones
+        $path = $this->uri->segment(1).'/'.$this->uri->segment(2);
+        //redireccionamos
+        redirect(site_url($path));
     }
 
 }
