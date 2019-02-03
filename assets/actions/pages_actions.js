@@ -390,6 +390,12 @@ var PagesActions = {
                 $('#date-hour').hide();
             }
 
+            if( estado == 7 ) {
+                $('#reason').show();
+            }else{
+                $('#reason').hide();
+            }
+
             if(estado == 8)
             {
                 var type = 'POST';
