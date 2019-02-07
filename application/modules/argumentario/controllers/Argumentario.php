@@ -53,6 +53,10 @@ class Argumentario  extends MX_Controller
         $data['reference'] = strtoupper(__FUNCTION__ . "-" . $this->nameClass);
         //ruta para los botones y acciones
         $data['path'] = $this->uri->segment(1) . '/' . $this->uri->segment(2);
+        //pasamos css para esta página
+        $data['css'] = $this->load->view('css_module/css','',TRUE);
+        //pasamos js para esta página
+        $data['js'] = $this->load->view('js_module/js','',TRUE);
 
         //icono del módulo
         $data['icono'] = $this->icono;
@@ -106,6 +110,11 @@ class Argumentario  extends MX_Controller
         $data['project'] = $this->proyecto;
         //ruta para los botones y acciones
         $data['path'] = $this->uri->segment(1).'/'.$this->uri->segment(2);
+        //pasamos css para esta página
+        $data['css'] = $this->load->view('css_module/css','',TRUE);
+        //pasamos js para esta página
+        $data['js'] = $this->load->view('js_module/js','',TRUE);
+        
         $data['id'] = $id;
         //icono del módulo
         $data['icono'] = $this->icono;
@@ -155,6 +164,7 @@ class Argumentario  extends MX_Controller
         //eliminamos el item
         $this->doctrine->em->remove($getRow);
         $this->doctrine->em->flush();
+        $path = $this->uri->segment(1).'/'.$this->uri->segment(2);
         //redireccionamos
         redirect(site_url($path));
     }

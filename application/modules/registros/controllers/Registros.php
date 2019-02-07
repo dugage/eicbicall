@@ -371,6 +371,8 @@ class Registros  extends MX_Controller
         $data['getRegistroLlamadas'] = $this->doctrine->em->getRepository("Entities\\Registrollamadas")->findBy(["idresgistro" => $id]);
         //formulario secundario
         $data['secondForm'] = $this->_getFormByData($data['getRegistro']->getCampaign()->getId(),$id);
+        //listado de motivos para los no interesa
+        $data['getReasons'] = $this->doctrine->em->getRepository("Entities\\Reasons")->findAll();
 
         $data['id'] = $id;
 
@@ -710,6 +712,7 @@ class Registros  extends MX_Controller
 
             //seteamos los datos
             $record->setIdestado($estado);
+            $record->setReason($this->input->post('reason'));
             //si el estado es igual a 5 -> No contesta, entramos y posponemos
             if( $estado->getId() == 5 ) {
                 //almacenamos la fecha actual y add un día
@@ -765,7 +768,7 @@ class Registros  extends MX_Controller
             {
 
                 $record->setOculto(1);
-
+ 
             }
             //actualizamos
             $this->doctrine->em->flush();
