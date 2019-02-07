@@ -107,13 +107,16 @@ $route['configuracion/motivos'] = 'motivos';
 $route['configuracion/motivos/add'] = 'motivos/add';
 $route['configuracion/motivos/edit/(:num)'] = 'motivos/edit/$1';
 $route['configuracion/motivos/delete/(:num)'] = 'motivos/delete/$1';
-
 // rutas usuarios
 $route['usuario'] = 'usuarios';
 $route['usuario/add'] = 'usuarios/add';
 $route['usuario/edit/(:num)'] = 'usuarios/edit/$1';
 $route['usuario/delete/(:num)'] = 'usuarios/delete/$1';
-
+// rutas plantillas
+$route['plantillas'] = 'plantillas';
+$route['plantillas/add'] = 'plantillas/add';
+$route['plantillas/edit/(:num)'] = 'plantillas/edit/$1';
+$route['plantillas/delete/(:num)'] = 'plantillas/delete/$1';
 //rutas registros
 $route['registros'] = 'registros';
 $route['registros/(:num)/(:num)'] = 'registros';
