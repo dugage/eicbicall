@@ -23,7 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
+$config['base_url'] = 'http://www.intraneteicbi.com/callcenter/intranet/';
+//$config['base_url'] = 'http://localhost/eicbicall/';
+=======
 $config['base_url'] = 'http://eicbicall.local/intranet/';
+>>>>>>> 362d43becc3674a580a472319df49900e71561c1
 
 /*
 |--------------------------------------------------------------------------

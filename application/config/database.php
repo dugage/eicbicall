@@ -77,7 +77,11 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
+<<<<<<< HEAD
+	'password' => '&4222SFCrb',
+=======
 	'password' => 'root',
+>>>>>>> 362d43becc3674a580a472319df49900e71561c1
 	'database' => 'eicbi_callcenter',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
