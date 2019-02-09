@@ -127,7 +127,7 @@ class Registros  extends MX_Controller
             //$data['getResult'] = $this->doctrine->em->getRepository("Entities\\Registros")->getRegistros($this->start,$this->limit,$f,$q,$this->usuarioid);
             //$data['getResult'] = $this->doctrine->em->getRepository("Entities\\Registros")->findBy(["idusuario" => $this->usuarioid]);
             $data['getResult'] = $this->doctrine->em->getRepository("Entities\\Registros")->getRegistrosByUser($this->start,$this->limit,$f,$q,$this->usuarioid);
-           
+
         }else{
 
             //obtenemos y mostramos todos los datos
@@ -373,7 +373,9 @@ class Registros  extends MX_Controller
         $data['secondForm'] = $this->_getFormByData($data['getRegistro']->getCampaign()->getId(),$id);
         //listado de motivos para los no interesa
         $data['getReasons'] = $this->doctrine->em->getRepository("Entities\\Reasons")->findAll();
-
+        //obtenemos la coleccón de templates
+        $data['getTemplates'] = $this->doctrine->em->getRepository("Entities\\Templates")->findAll();
+        
         $data['id'] = $id;
 
         //fecha actual más 1

@@ -15,6 +15,8 @@ class Plantillas extends MX_Controller
         $this->icono = 'fa fa-envelope-o';
         //helper uploads
         $this->load->helper('upload_helper');
+        //libraría para enviar emails
+        $this->load->library('email');
 	}
 
 	public function index()
@@ -212,6 +214,40 @@ class Plantillas extends MX_Controller
         }
         //redireccionamos al edit
         redirect(site_url('configuracion/roles/edit/'.$id));
+    }
+    /**
+     * Método que realiza en envío del template por email
+     * @param id -- id del template
+     * @param template -- contiene los datos del template
+     */
+    public function sendTemplate()
+    {
+        $id = $this->input->post('template');
+        //obtenemos los datos del tamplate por id
+        $template = $this->doctrine->em->find("Entities\\Templates", $id);
+        //enviamos el email
+        $config = Array(   
+            'protocol' => 'smtp',
+            //'mailpath' =>'/usr/sbin/sendmail',
+            'smtp_host' => 'smtp.mailtrap.io',
+            'smtp_port' => 25,
+            'smtp_timeout' =>7,
+            'smtp_user' => '31115b402caa64', // change it to yours
+            'smtp_pass' => 'fc29265f1e1036', // change it to yours
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'crlf' => "\r\n",
+            'newline' => "\r\n",
+            'wordwrap' => TRUE
+        );
+    
+        $this->email->initialize($config);
+        $this->email->from('your@example.com', 'Your Name');
+        $this->email->to('gatoburbuja@gmail.com');
+        $this->email->subject($template->getTitle());
+        $this->email->message($template->getText());
+        $this->email->send();
+        echo json_encode($template->getTitle());
     }
 
 }

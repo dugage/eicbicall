@@ -1178,6 +1178,34 @@ var PagesActions = {
 
         });
     },
+    /**
+     * Método que envía un email con información comercial
+     * seleccionando un template de la entidad Templates
+     */
+    SendInfo: function(){
+
+        $('body').on('click', '.send-info-template', function(e){
+            //obtenemos el template seleccionado
+            let template = $('.info-templates').val();
+            //comprobamos si se selecciono o no una opción
+            if( template == 0 ){
+                $('#modalSendInfo .alert-danger').show();
+            }else{
+                $('#modalSendInfo .alert-danger').hide();
+                //realizamos un post mediante ajax
+                let type = 'POST';
+                let url = site_url+'/plantillas/sendTemplate';
+                let data = {'template':template};
+                //obtenemos lo retornado, que en este caso puede ser un
+                //mensage positivo o negativo para informar al teleoperador.
+                var returndata = ActionAjax(type,url,data,null,null,true,false);
+                result = JSON.parse(returndata);
+                console.log(result);
+            }
+            
+
+        });
+    },
     
 }
 
@@ -1231,4 +1259,5 @@ $(window).load(PagesActions.DeleteFile);
 $(window).load(PagesActions.Tarifas);
 $(window).load(PagesActions.EmailToLink);
 $(window).load(PagesActions.GetArgumentario);
+$(window).load(PagesActions.SendInfo);
 
