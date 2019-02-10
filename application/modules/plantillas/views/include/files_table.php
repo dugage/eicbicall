@@ -14,11 +14,10 @@
         <?php foreach ($getAttachments as $attachment): ?>
 
             <tr>
-                <td> <?= $result->getId() ?> </td>
-                <td> <?= $result->getTitle() ?> </td>
+                <td> <?= $attachment->getId() ?> </td>
+                <td> <?= $attachment->getAttached() ?> </td>
                 <td>
-                    <a title="Editar" href="<?= site_url($path.'/edit/'.$result->getId()) ?>" class="btn yellow" type="button"><i class=" icon-pencil "></i></a>
-                    <a title="Eliminar" href="<?= site_url($path.'/delete/'.$result->getId()) ?>" class="btn red" type="button"><i class="icon-trash "></i></a>
+                    <a title="Eliminar" href="<?= site_url($path.'/deleteFile/'.$attachment->getId()) ?>" class="btn red" type="button"><i class="icon-trash "></i></a>
                 </td>
 
             </tr>

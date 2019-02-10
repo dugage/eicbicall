@@ -115,6 +115,8 @@ class Plantillas extends MX_Controller
         $data['css'] = $this->load->view('css_module/css','',TRUE);
         //pasamos js para esta página
         $data['js'] = $this->load->view('js_module/js','',TRUE);
+        //datos cabecera tabla
+        $data['thead'] = array('ID','Archivo');
 
         $data['id'] = $id;
         //obtenemos la plantilla
@@ -126,7 +128,7 @@ class Plantillas extends MX_Controller
         //lista migas pan
         $data['breadcrumb'] = array(str_replace('_', ' ', $this->nameClass), 'Crear ' . substr(str_replace('_', ' ', $this->nameClass), 0, -1));
         //colección de documentos
-        $data['getAttachments'] = $this->doctrine->em->getRepository("Entities\\Attachments")->findBy(["tablerow" => 'template']);
+        $data['getAttachments'] = $this->doctrine->em->getRepository("Entities\\Attachments")->findBy(['tablerow' => 'templates','idrow' => $id]);
         //comprobamos formulario submit
         if (isset($_POST['submit'])) {
             //validamos los datos
@@ -204,16 +206,19 @@ class Plantillas extends MX_Controller
         //comprobamos si se envio el formulario
         if(isset($_POST['submit-file']))
         {
-            //convertimos el vector en un string separado por coma
-            $permissions = implode(',',$_POST['module']);
-            //instanciamos el rol
-            $rol = $this->doctrine->em->find("Entities\\Roles", $id);
-            $rol->setPermisos($permissions);
+            $upload_file = upload('upload-file','uploads',0,0,35000);
+            //instanciamos la entidad
+            $reg = new Entities\Attachments;
+            //seteamos los datos
+            $reg->setIdrow($id);
+            $reg->setTablerow('templates');
+            $reg->setAttached($upload_file['res']);
+            //guardamos
+            $this->doctrine->em->persist($reg);
             $this->doctrine->em->flush();
- 
         }
         //redireccionamos al edit
-        redirect(site_url('configuracion/roles/edit/'.$id));
+        redirect(site_url('plantillas/edit/'.$id));
     }
     /**
      * Método que realiza en envío del template por email
@@ -242,12 +247,32 @@ class Plantillas extends MX_Controller
         );
     
         $this->email->initialize($config);
+        $this->email->clear(TRUE);
         $this->email->from('your@example.com', 'Your Name');
         $this->email->to('gatoburbuja@gmail.com');
         $this->email->subject($template->getTitle());
         $this->email->message($template->getText());
-        $this->email->send();
-        echo json_encode($template->getTitle());
+        //$this->email->attach('./assets/uploads/97807356989561.pdf');
+        //adjuntamos los archivos
+        $attachments = $this->doctrine->em->getRepository("Entities\\Attachments")->findBy(['tablerow' => 'templates','idrow' => $id]);
+        foreach ($attachments as $key => $attachment) {
+            
+            $this->email->attach('./assets/uploads/'.$attachment->getAttached());
+        }
+        //enviamos el email
+        if($this->email->send())
+        {
+            $json['msm'] = 'Información enviada con éxito.';
+            $json['result'] = true;
+            echo json_encode($json);
+
+        }else{
+
+            $json['msm'] = $this->email->print_debugger();
+            $json['result'] = false;
+            echo json_encode($json);
+        }
+        
     }
 
 }

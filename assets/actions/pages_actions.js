@@ -1200,6 +1200,7 @@ var PagesActions = {
                 //mensage positivo o negativo para informar al teleoperador.
                 var returndata = ActionAjax(type,url,data,null,null,true,false);
                 result = JSON.parse(returndata);
+                
                 console.log(result);
             }
             

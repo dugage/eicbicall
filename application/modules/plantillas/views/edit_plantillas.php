@@ -36,15 +36,16 @@
 
                 <h3>Documentos</h3>
 
-                <form  action="<?= site_url('plantillas/uploadFile/'.$getRow->getId()) ?>" role="form" method="post">
+                <form name="form-upload-file" enctype="multipart/form-data" action="<?= site_url('plantillas/uploadFile/'.$getRow->getId()) ?>" role="form" method="post">
 
-                    <input style="display:none;" name="upload_file" id="upload-file" type="file">
+                    <input style="display:none;" cmd="upload-file" name="upload-file" id="upload-file" type="file">
+                    <input type="hidden" id="submit-file" name="submit-file" value="<?= $getRow->getId() ?>">
 
                     <div class="form-body">
 
                         <div class="form-group">
 
-                            <button cmd="upload_file" name="submit-file" class="btn green open-file" type="button">
+                            <button cmd="upload-file" class="btn green open-file" type="button">
                                 <i class="fa fa-file-o" aria-hidden="true"></i> Adjuntar documento
                             </button>
 
@@ -63,8 +64,6 @@
                     <div class="alert alert-warning" role="alert">Esta sección no tiene datos para mostrar.</div>
 
                 <?php endif ?>
-
-                
 
             </div>
 
