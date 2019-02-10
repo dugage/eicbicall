@@ -34,6 +34,7 @@
 
                 <div style="display:none;" class="alert alert-danger" role="alert">Tienes que seleccionar una plantilla.</div>
                 <div style="display:none;" class="alert alert-success" role="alert"></div>
+                <div style="display:none;" class="alert alert-info" role="alert"></div>
 
                 <div class="form-group">
 

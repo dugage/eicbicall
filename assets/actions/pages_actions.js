@@ -4,6 +4,9 @@ var PagesActions = {
 
         $(".menu-toggler").addClass('fold');
         foldMenu();
+        let viweRegsiterEmail = $("#VIEW-REGISTROS input[name='email']").val();
+        if(viweRegsiterEmail != '')
+            $("#VIEW-REGISTROS .send-template").show();
 
     },
 
@@ -1192,6 +1195,9 @@ var PagesActions = {
                 $('#modalSendInfo .alert-danger').show();
             }else{
                 $('#modalSendInfo .alert-danger').hide();
+                //mostramos el msm de enviando.
+                $('#modalSendInfo .alert-info').html('<i class="fa fa-clock-o" aria-hidden="true"></i> Enviando información...');
+                $('#modalSendInfo .alert-info').show();
                 //realizamos un post mediante ajax
                 let type = 'POST';
                 let url = site_url+'/plantillas/sendTemplate';
@@ -1201,7 +1207,20 @@ var PagesActions = {
                 var returndata = ActionAjax(type,url,data,null,null,true,false);
                 result = JSON.parse(returndata);
                 
-                console.log(result);
+                if( result.result ){
+
+                    $('#modalSendInfo .alert-success').text('La información ha sido enviada con éxito');
+                    $('#modalSendInfo .alert-info').hide();
+                    $('#modalSendInfo .alert-success').show();
+
+                }else{
+
+                    $('#modalSendInfo .alert-danger').html('<strong>Ups</strong> Hemos tenido un problema y la información no ha podido ser enviada.');
+                    $('#modalSendInfo .').hide();
+                    $('#modalSendInfo .alert-danger').show();
+                }
+                
+                console.log(result.msm);
             }
             
 
