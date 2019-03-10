@@ -45,6 +45,8 @@ class Login  extends MX_Controller
                 if( $usuario ) {
 
                     $this->_getSession($usuario);
+                    echo $usuario->getPass().'<br/>';
+                    echo $pass;
                     //comprobamos la contraseña
                     if(password_verify($pass, $usuario->getPass()))
                     {
@@ -120,7 +122,7 @@ class Login  extends MX_Controller
         //vector que almacena los datos a devolver
         $data = [];
         //decodificamos la cadena
-        $token = $this->encryption->decrypt($token);
+        $token = base64_decode($token);
         //la convertimos en un vector
         $token = explode('_',$token);
         //alamceanmos en el vector data elos datos con el formato key=>value
