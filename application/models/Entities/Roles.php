@@ -28,7 +28,7 @@ class Roles
     /**
      * @var string
      *
-     * @Column(name="permisos", type="string", length=50, precision=0, scale=0, nullable=true, unique=false)
+     * @Column(name="permisos", type="string", length=250, precision=0, scale=0, nullable=true, unique=false)
      */
     private $permisos;
 

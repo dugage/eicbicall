@@ -43,7 +43,8 @@ var PagesActions = {
     	$( ".open-file" ).click(function() {
 
 			var cdm = $(this).attr('cmd');
-    		$('input[name="'+cdm+'"]').trigger('click');
+            $('input[name="'+cdm+'"]').trigger('click');
+            $('#'+cdm).trigger('click');
 
     	});
 
