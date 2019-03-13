@@ -154,3 +154,8 @@ $route['archivador/deleteFile'] = 'biblioteca/deleteFile';
 
 //rutas precontactos
 $route['precontactos/export/(:num)'] = 'precontactos/export/$1';
+//rutas masrcas
+$route['productos/marcas'] = 'marcas';
+$route['productos/marcas/edit/(:num)'] = 'marcas/edit/$1';
+$route['marcas/delete/(:num)'] = 'marcas/delete/$1';
+$route['productos/marcas/add'] = 'marcas/add';

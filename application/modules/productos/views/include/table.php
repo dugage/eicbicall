@@ -80,11 +80,11 @@
 
                   <ul class="dropdown-menu" role="menu">
 
-                      <li><?= anchor($lang.'/'.$param.'/edit/'.$value->id, '<span class="fa fa-pencil"></span> Editar ') ?></li>
+                      <li><?= anchor($param.'/edit/'.$value->id, '<span class="fa fa-pencil"></span> Editar ') ?></li>
 
-                      <li><?= anchor($lang.'/'.$param.'/copy/'.$value->id, '<span class="fa fa-files-o"></span> Duplicar ') ?></li>
+                      <li><?= anchor($param.'/copy/'.$value->id, '<span class="fa fa-files-o"></span> Duplicar ') ?></li>
 
-                      <li><?= anchor($lang.'/'.$param.'/delete/'.$value->id, '<span class="fa fa-trash-o"></span> Borrar ') ?></li>
+                      <li><?= anchor($param.'/delete/'.$value->id, '<span class="fa fa-trash-o"></span> Borrar ') ?></li>
 
                   </ul>
 
